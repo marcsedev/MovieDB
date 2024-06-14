@@ -31,15 +31,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieDBTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-
-                    lifecycleScope.launch {
-                        val movies = repository.getUpcomingMovies()
-                        println(movies)
-                    }
                 }
             }
         }
