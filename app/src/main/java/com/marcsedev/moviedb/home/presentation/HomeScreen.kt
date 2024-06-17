@@ -15,10 +15,14 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.marcsedev.moviedb.home.presentation.components.HomeMovieList
 
 @SuppressLint("SuspiciousIndentation")
 @Composable
@@ -33,35 +37,15 @@ fun HomeScreen(
     ) {
         if (state.upcoming.isNotEmpty()) {
             item {
-                Text(
-                    text = "Próximos estrenos",
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 16.dp)
+                HomeMovieList(
+                    title = "Próximos estrenos",
+                    posters = state.upcoming.map { it.poster }
                 )
-            }
-            item {
-                LazyRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    items(state.upcoming) { movie ->
-                        Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier.padding(8.dp)
-                        ) {
-                            Text(text = movie.title, textAlign = TextAlign.Center)
-                            // Aquí puedes añadir AsyncImage para mostrar la imagen del póster de la película
-                        }
-                    }
-                }
             }
         }
     }
-
-    Box(modifier = Modifier.fillMaxSize()) {
-        if (state.isLoading) {
+    if (state.isLoading) {
+        Box(modifier = Modifier.fillMaxSize()) {
             CircularProgressIndicator(
                 modifier = Modifier
                     .align(Alignment.Center)
