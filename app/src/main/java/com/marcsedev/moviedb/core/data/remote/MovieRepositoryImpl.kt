@@ -17,4 +17,13 @@ class MovieRepositoryImpl(
             Result.failure(e)
         }
     }
+
+    override suspend fun getPopularMovies(): Result<List<Movie>> {
+        return try {
+            val results = api.getPopularMovies(BuildConfig.API_KEY).results
+            Result.success(results.map { it.toDomain() })
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }
