@@ -96,6 +96,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.logging.interceptor)
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
     //Hilt
     implementation(libs.hilt.android)

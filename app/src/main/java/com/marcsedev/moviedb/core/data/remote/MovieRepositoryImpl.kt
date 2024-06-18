@@ -9,7 +9,21 @@ import com.marcsedev.moviedb.core.domain.repository.MovieRepository
 class MovieRepositoryImpl(
     private val api: MovieApi
 ) : MovieRepository {
-    override suspend fun getUpcomingMovies(): List<Movie> {
-        return api.getUpcomingMovies(BuildConfig.API_KEY).results.map { it.toDomain() }
+    override suspend fun getUpcomingMovies(): Result<List<Movie>> {
+        return try {
+            val results = api.getUpcomingMovies(BuildConfig.API_KEY).results
+            Result.success(results.map { it.toDomain() })
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getPopularMovies(): Result<List<Movie>> {
+        return try {
+            val results = api.getPopularMovies(BuildConfig.API_KEY).results
+            Result.success(results.map { it.toDomain() })
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
 }

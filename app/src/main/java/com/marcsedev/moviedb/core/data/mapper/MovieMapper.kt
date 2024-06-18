@@ -11,7 +11,7 @@ fun MovieResult.toDomain(): Movie {
         releaseYear = this.releaseDate?.substring(0, 4)?.toIntOrNull() ?: 0,
         language = this.originalLanguage ?: "",
         rating = this.voteAverage,
-        poster = MovieApi.BASE_URL + (this.posterPath ?: ""),
+        poster = MovieApi.IMAGE_URL + (this.posterPath ?: ""),
         genres = this.genreIds ?: emptyList() // Utiliza una lista vacía si genreIds es nulo
     )
 }
