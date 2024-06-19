@@ -3,10 +3,10 @@
 
     <style name="Theme.MovieDB" parent="android:Theme.Material.Light.NoActionBar" />
 
-    <style name="Theme.MySplashScreen" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/red</item>
-        <item name="android:windowBackground">@drawable/splash_screen_gradient_color</item>
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
-        <item name="postSplashScreenTheme">@style/Theme.MovieDB</item>
-    </style>
+        <style name="Theme.app.SplashScreen" parent="Theme.SplashScreen">
+            <item name="android:windowBackground">@drawable/splash_screen_background_gradient_color</item>
+            <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+            <item name="postSplashScreenTheme">@style/Theme.MovieDB</item>
+        </style>
+
 </resources>
