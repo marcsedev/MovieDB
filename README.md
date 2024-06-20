@@ -1,5 +1,16 @@
 # MovieDB
 
+# TODO
+
+- Manejar apartado Recomendados para ti utilizando peliculas Tendencia para filtrar por Id.
+- Visualizar detalle de película recomendada.
+- Opción de ver trailer en el detalle.
+- La app debe poder fucnionar offline (con caché).
+- Transiciones/Animaciones.
+- Uso de buenas prácticas y ecalabilidad.
+- Pruebas Unitarias.
+
+
 ## Preguntas de interés
 
 #### 1. ¿En qué consiste el método de responsabilidad única? ¿Cuál es su propósito?

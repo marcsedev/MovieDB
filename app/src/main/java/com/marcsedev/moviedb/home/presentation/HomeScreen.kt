@@ -23,6 +23,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcsedev.moviedb.R
 import com.marcsedev.moviedb.home.presentation.components.CustomTitleHomeText
 import com.marcsedev.moviedb.home.presentation.components.FilteredButton
+import com.marcsedev.moviedb.home.presentation.components.FilteredMovieList
 import com.marcsedev.moviedb.home.presentation.components.HomeMovieList
 import com.marcsedev.moviedb.ui.theme.Background
 
@@ -36,6 +37,7 @@ fun HomeScreen(
 
     Scaffold(
         containerColor = Background,
+        modifier = Modifier.padding(vertical = 16.dp),
         content = { paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
                 LazyColumn(
@@ -79,7 +81,19 @@ fun HomeScreen(
                                     onClick = { setIsSelected(!isSelected) }
                                 )
                             }
+                            item {
+                                FilteredButton(
+                                    text = "Recomendado para ti",
+                                    isSelected = isSelected,
+                                    onClick = { setIsSelected(!isSelected) }
+                                )
+                            }
                         }
+                    }
+                    item {
+                        FilteredMovieList(
+                            title = "",
+                            posters = state.upcoming.map { it.poster })
                     }
                 }
                 if (state.isLoading) {

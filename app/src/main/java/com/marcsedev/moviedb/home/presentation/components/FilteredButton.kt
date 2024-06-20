@@ -26,13 +26,13 @@ fun FilteredButton(
             .padding(8.dp)
             .clip(RoundedCornerShape(20.dp))
             .border(width = 1.dp, color = Color.White, shape = RoundedCornerShape(20.dp))
-            .background(if (isSelected) Background else Color.White)
+            .background(if (isSelected) Color.White else Background)
             .clickable { onClick() }
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
         Text(
             text = text,
-            color = if (isSelected) Color.White else Color.Black
+            color = if (isSelected) Background  else Color.White
         )
     }
 }
