@@ -5,11 +5,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -22,9 +20,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.marcsedev.moviedb.R
 import com.marcsedev.moviedb.home.presentation.components.CustomTitleHomeText
-import com.marcsedev.moviedb.home.presentation.components.FilteredButton
-import com.marcsedev.moviedb.home.presentation.components.FilteredMovieList
 import com.marcsedev.moviedb.home.presentation.components.HomeMovieList
+import com.marcsedev.moviedb.home.presentation.components.HomeRecommended
 import com.marcsedev.moviedb.ui.theme.Background
 
 @SuppressLint("SuspiciousIndentation")
@@ -63,37 +60,16 @@ fun HomeScreen(
                     if (state.popular.isNotEmpty()) {
                         item {
                             HomeMovieList(
-                                title = "Tendencias",
+                                title = stringResource(R.string.popular),
                                 posters = state.popular.map { it.poster }
                             )
                         }
                     }
                     item { Spacer(modifier = Modifier.height(27.dp)) }
                     item {
-                        LazyRow(
-                            horizontalArrangement = Arrangement.Start,
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            item {
-                                FilteredButton(
-                                    text = "En Español",
-                                    isSelected = isSelected,
-                                    onClick = { setIsSelected(!isSelected) }
-                                )
-                            }
-                            item {
-                                FilteredButton(
-                                    text = "Recomendado para ti",
-                                    isSelected = isSelected,
-                                    onClick = { setIsSelected(!isSelected) }
-                                )
-                            }
-                        }
-                    }
-                    item {
-                        FilteredMovieList(
-                            title = "",
-                            posters = state.upcoming.map { it.poster })
+                        HomeRecommended(selectedFilter = state.selectedFilter,
+                            onFilteredClick = {} ,
+                            movieList = state.filteredMovies) //TODO: CHANGE in future stories
                     }
                 }
                 if (state.isLoading) {
