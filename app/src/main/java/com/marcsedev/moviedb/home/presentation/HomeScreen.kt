@@ -67,9 +67,12 @@ fun HomeScreen(
                     }
                     item { Spacer(modifier = Modifier.height(27.dp)) }
                     item {
-                        HomeRecommended(selectedFilter = state.selectedFilter,
-                            onFilteredClick = {} ,
-                            movieList = state.filteredMovies) //TODO: CHANGE in future stories
+                        HomeRecommended(
+                            selectedFilter = state.selectedFilter,
+                            onFilteredClick = {viewModel.onEvent(HomeEvent.ChangeFilter(it))},
+                            movieList = state.filteredMovies, //TODO: CHANGE in future stories
+                            onMovieClick = {}
+                        )
                     }
                 }
                 if (state.isLoading) {
@@ -84,3 +87,12 @@ fun HomeScreen(
         }
     )
 }
+/*
+
+@Preview
+@Composable
+fun HomeScreenPreview() {
+    MovieDBTheme {
+        HomeScreen()
+    }
+}*/

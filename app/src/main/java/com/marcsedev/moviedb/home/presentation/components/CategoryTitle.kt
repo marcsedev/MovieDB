@@ -17,6 +17,7 @@ fun CategoryTitle(
         fontWeight = FontWeight.SemiBold,
         fontSize = 20.sp,
         color = Color.White,
-        modifier = modifier)
+        modifier = modifier
+    )
 
 }
