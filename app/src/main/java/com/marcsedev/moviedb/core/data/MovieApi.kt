@@ -4,15 +4,24 @@ import com.marcsedev.moviedb.core.data.remote.dto.MovieDtoResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface  MovieApi {
-    companion object{
+interface MovieApi {
+    companion object {
         const val IMAGE_URL = "https://image.tmdb.org/t/p/original/"
         const val BASE_URL = "https://api.themoviedb.org/3/"
     }
+    //TODO: Pagination
 
-    @GET("movie/upcoming") //TODO: Pagination
-    suspend fun getUpcomingMovies(@Query("api_key") apiKey: String): MovieDtoResponse
+    @GET("movie/upcoming")
+    suspend fun getUpcomingMovies(): MovieDtoResponse
 
-    @GET("movie/popular") //TODO: Pagination
-    suspend fun getPopularMovies(@Query("api_key") apiKey: String): MovieDtoResponse
+    @GET("movie/popular")
+    suspend fun getPopularMovies(): MovieDtoResponse
+
+    @GET("discover/movie?sort_by=popularity.desc&include_adult=false")
+    suspend fun getMoviesByYear(@Query("year") year: Int): MovieDtoResponse
+
+    @GET("discover/movie?sort_by=popularity.desc&include_adult=false")
+    suspend fun getMoviesByLanguage(@Query("with_original_language") language: String): MovieDtoResponse
+
+
 }

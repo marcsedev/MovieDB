@@ -70,7 +70,7 @@ fun HomeScreen(
                         HomeRecommended(
                             selectedFilter = state.selectedFilter,
                             onFilteredClick = {viewModel.onEvent(HomeEvent.ChangeFilter(it))},
-                            movieList = state.filteredMovies, //TODO: CHANGE in future stories
+                            movieList = /*state.moviesByYear.map { it.poster },// */state.filteredMovies,
                             onMovieClick = {}
                         )
                     }

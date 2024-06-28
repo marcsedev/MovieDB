@@ -18,26 +18,28 @@ fun HomeRecommended(
     onFilteredClick: (FilterType) -> Unit,
     movieList: List<Movie>,
     modifier: Modifier = Modifier,
-    onMovieClick: (Movie) -> Unit
+    onMovieClick: (Int) -> Unit
 ) {
-    if (movieList.isNotEmpty()) {
-        Column(
-            modifier = modifier
-                .fillMaxWidth()
-        ) {
-            CategoryTitle(title = "Recomendados para ti")
-            Spacer(modifier = Modifier.height(16.dp))
-            FilterPillContainer(
-                filters = FilterType.values().toList(),
-                selectedFilter = selectedFilter,
-                onFilterClick = onFilteredClick
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-
-
-        }
+    Column(
+        modifier = modifier
+            .fillMaxWidth()
+    ) {
+        CategoryTitle(title = "Recomendados para ti")
+        Spacer(modifier = Modifier.height(16.dp))
+        FilterPillContainer(
+            filters = FilterType.values().toList(),
+            selectedFilter = selectedFilter,
+            onFilterClick = onFilteredClick
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        RecommendedMovieList(
+            selectedFilter = selectedFilter,
+            posters = movieList.map { it.poster},
+            onMovieClick = onMovieClick
+        )
     }
 }
+
 
 @Preview
 @Composable
