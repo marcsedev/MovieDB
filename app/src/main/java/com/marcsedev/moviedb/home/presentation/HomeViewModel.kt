@@ -72,7 +72,7 @@ class HomeViewModel @Inject constructor(
     private suspend fun getMoviesByFilter() {
         val result = when (state.selectedFilter) {
             FilterType.SPANISH -> {
-                repository.getMoviesByLanguage("ko")
+                repository.getMoviesByLanguage("es")
             }
 
             FilterType.FOR_YOU -> {
